@@ -1,11 +1,16 @@
 # InstagramXImgur
 
-**InstagramXImgur** is a lightweight Instagram-like app built using **SwiftUI** and the **MVVM** architecture. It fetches viral posts from the **Imgur API** and displays them in a scrollable feed, supporting both images and videos.
+**InstagramXImgur** is a lightweight Instagram-like app built using **SwiftUI** and the **MVVM** architecture. It fetches viral posts from the **Imgur API** and displays them in a scrollable feed, supporting both images and videos. This app demonstrates the potential of SwiftUI and Combine in building clean, responsive, and scalable mobile applications.
 
 ---
 
 # Demo
-
+<div align="left">
+  <img src="ReadMe/instagramXimgur%20Demo%201.png" width="200" />
+  <img src="ReadMe/instagramXimgur%20Demo%202.png" width="200" />
+  <img src="ReadMe/instagramXimgur%20Demo%203.png" width="200" />
+  <img src="ReadMe/instagramXimgur%20Demo%204.png" width="200" />
+</div>
 
 ---
 
@@ -18,6 +23,10 @@
 ✅ **Autoplay**: Videos autoplay when visible and pause when scrolled away.
 
 ✅ **Memory Management**: Removes `AVPlayer` when videos are not visible to optimize memory usage.
+
+✅ **Dark Mode**
+
+✅ **Unit Tests**
 
 ---
 
