@@ -11,7 +11,6 @@ import AVKit
 struct ViralFeedView: View {
     
     @StateObject private var viewModel = ViralPostViewModel()
-    @State private var hasFetchedData = false
 
     /// Body
     var body: some View {
@@ -48,11 +47,10 @@ struct ViralFeedView: View {
                 }
             }
         }.onAppear {
-            // Fetch viral posts and update the loading state
-            if !hasFetchedData {
-                Task {
+
+            if viewModel.viralPosts.isEmpty {
+                Task(priority: .utility) {
                     viewModel.fetchViralPosts()
-                    hasFetchedData = true
                 }
             }
         }

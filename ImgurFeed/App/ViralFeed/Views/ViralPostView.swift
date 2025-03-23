@@ -87,7 +87,7 @@ struct ViralPostView: View {
                           )
                           .tag(index)
                       }
-                  }
+                  }.tabViewStyle(.page(indexDisplayMode: .automatic))
                   .onChange(of: isCellVisibleOnScreen, { oldValue, newValue in
                       canPlayVideoState[post.gallery![selectedTab].id] = newValue
                   })
@@ -96,19 +96,22 @@ struct ViralPostView: View {
                       if isCellVisibleOnScreen {
                           canPlayVideoState[post.gallery![newValue].id] = true
                       }
-                  })
-                  .tabViewStyle(.page(indexDisplayMode: .automatic))
+                  }).onAppear {
+                      if isCellVisibleOnScreen {
+                          canPlayVideoState[post.gallery![selectedTab].id] = true
+                      }
+                      post.gallery?.forEach { gallery in
+                         visibilityState[gallery.id] = true
+                      }
+                  }
+                  .onDisappear {
+                      post.gallery?.forEach { gallery in
+                         canPlayVideoState[gallery.id] = false
+                         visibilityState[gallery.id] = false
+                      }
+                  }
               }else {
                   Text("No Post available")
-              }
-          }.onAppear {
-              post.gallery?.forEach { gallery in
-                 visibilityState[gallery.id] = true
-              }
-          }
-          .onDisappear {
-              post.gallery?.forEach { gallery in
-                 visibilityState[gallery.id] = false
               }
           }.frame(width: 400, height: 400).clipShape(Rectangle())
     }
